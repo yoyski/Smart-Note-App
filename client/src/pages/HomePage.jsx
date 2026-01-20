@@ -1,25 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import HeaderHomePage from "../components/HeaderHomePage";
-import { useNoteStore } from "../stores/noteStore";
 import NoteCard from "../components/NoteCard";
+import axios from "axios";
+import NotesNotFound from "../components/NotesNotFound";
 
 export default function HomePage() {
 
-  const fetchNotes = useNoteStore((state) => state.fetchNotes);
-  const notes = useNoteStore((state) => state.notes);
-  const loading = useNoteStore((state) => state.loading);
-
+  const [loading, setLoading] = useState(false);
+  const [notes, setNotes] = useState([]);
   useEffect(() => {
+    
+    const fetchNotes = async () => {
+      await axios.get("http://localhost:3000/api/notes")
+        .then((res) => {
+          setNotes(res.data);
+          setLoading(false);
+        })
+    }
+
     fetchNotes();
   }, [])
 
+
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <HeaderHomePage />
 
       <div>
         {loading && <div>Loading...</div>}
-        {notes.length === 0 && !loading && <div>No notes available.</div>}
+        {notes.length === 0 && !loading && <NotesNotFound />}
         <div className="grid gap-4">
             {notes.map(note => (
                 <NoteCard key={note._id} note={note} />
