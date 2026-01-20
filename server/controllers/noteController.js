@@ -20,7 +20,7 @@ export const createNote = async (req, res) => {
 
 export const getAllNotes = async (_, res) => {
   try {
-    const notes = await Note.find();
+    const notes = await Note.find().sort({createdAt: -1})
     res.status(200).json(notes);
   } catch (error) {
     console.log("Error in getAllNotes:", error);
@@ -52,7 +52,7 @@ export const updateNote = async (req, res) => {
       { new: true },
     );
 
-    if (!updatedTodo)
+    if (!updatedNote)
       return res.status(404).json({ message: "Note not found" });
     res.status(200).json(updatedNote);
   } catch (error) {

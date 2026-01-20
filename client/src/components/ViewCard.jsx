@@ -1,14 +1,12 @@
 import React from "react";
 import { formatDate } from "../lib/util";
-import { Link } from 'react-router'
 
-const NoteCard = ({ note }) => {
-
+const ViewCard = ({ note }) => {
 
   return (
-    <Link 
-    to={`/note/${note._id}`}
-    className="p-6 rounded-xl shadow-md cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1 bg-white ">
+    <div
+      className="p-6 rounded-xl shadow-md cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1 bg-white "
+    >
       <h3 className="text-xl font-semibold mb-2 text-[#36656B]">
         {note.title}
       </h3>
@@ -18,8 +16,8 @@ const NoteCard = ({ note }) => {
       <p className="text-sm opacity-50 text-[#36656B]">
         {formatDate(new Date(note.createdAt))}
       </p>
-    </Link>
+    </div>
   );
 };
 
-export default NoteCard;
+export default ViewCard;
