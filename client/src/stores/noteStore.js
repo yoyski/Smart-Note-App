@@ -2,12 +2,12 @@ import { create } from "zustand";
 
 export const useNoteStore = create((set) => ({
   notes: [],
+  currentNote: null,
   loading: false,
-  selectedNoteId: null,
-  currentNote: null, // use this for preview
 
-
-  setSelectedNoteId: (id) => set({ selectedNoteId: id }),
-  setCurrentNote: (note) => set({ currentNote: note })
-
+  // actions
+  setNotes: (notes) => set({ notes }),
+  addNotes: (note) => set((state) => ({ notes: [...state.notes, note] })),
+  setCurrentNote: (note) => set({ currentNote: note }),
+  setLoading: (value) => set({ loading: value }),
 }));

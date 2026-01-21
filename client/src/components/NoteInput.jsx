@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function NoteInput({ note, setNote }) {
+
   return (
     <div className="bg-white rounded-xl shadow-lg p-6">
       <input

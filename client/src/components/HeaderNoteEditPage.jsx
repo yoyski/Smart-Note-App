@@ -15,7 +15,7 @@ export default function HeaderNoteEditPage({ onClick, isNoteUnchanged, id}) {
         </div>
         <div className="flex items-center gap-3">
           <button
-            className="inline-flex items-center justify-center rounded-full bg-[#36656B] p-3 text-white disabled:opacity-50"
+            className="disabled:opacity-50 inline-flex items-center justify-center rounded-full bg-[#36656B] p-3 text-white"
             onClick={onClick}
             disabled={isNoteUnchanged}
           >

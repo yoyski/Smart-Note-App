@@ -5,7 +5,7 @@ const ViewCard = ({ note }) => {
 
   return (
     <div
-      className="p-6 rounded-xl shadow-md cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1 bg-white "
+      className="p-6 rounded-xl shadow-md cursor-pointer transition-all hover:shadow-lg bg-white "
     >
       <h3 className="text-xl font-semibold mb-2 text-[#36656B]">
         {note.title}

@@ -8,18 +8,17 @@ import NoteInput from "../components/NoteInput";
 import Button from "../components/Button";
 import { useNavigate } from "react-router";
 import useFetchNoteById from "../hooks/useFetchNoteById";
+import NoteInputSpinner from "../components/NoteInputSpinner";
+import { usePersistedState } from "../hooks/usePersistedState";
 
 export default function TodoEditPage() {
   const { currentNote, setCurrentNote } = useNoteStore();
-  const [note, setNote] = useState({
-    title: "",
-    content: "",
-  });
   const navigate = useNavigate();
   const { id } = useParams();
-  const [loading, setLoading] = useState(false);
+  const [loading, ] = useState(false);
+  const [note, setNote] = usePersistedState(`note-${id}`, {}); //it already has value came from ViewPage store in same key 
 
-  useFetchNoteById(id, setLoading, setNote, setCurrentNote);
+  useFetchNoteById(id, setCurrentNote);
 
   const isNoteUnchanged =
     note.title === (currentNote?.title || "") &&
@@ -34,18 +33,14 @@ export default function TodoEditPage() {
       if (!note.title.trim() || !note.content.trim())
         return console.log("Note is empty, not saving.");
       if (isNoteUnchanged) return console.log("No changes");
-      setLoading(true);
       await axios
         .put(`http://localhost:3000/api/notes/${id}`, note)
         .then((res) => {
           setCurrentNote(res.data);
-          setLoading(false);
           navigate("/");
         });
     } catch (error) {
       console.error("Error updating note:", error);
-    } finally {
-      setLoading(false);
     }
   };
 
