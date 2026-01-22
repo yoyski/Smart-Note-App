@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import HeaderHomePage from "../components/HeaderHomePage";
+import { HeaderHomePage } from "../components/HeaderPage";
 import NoteCard from "../components/NoteCard";
 import axios from "axios";
 import NotesNotFound from "../components/NotesNotFound";

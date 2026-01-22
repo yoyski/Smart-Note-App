@@ -1,9 +1,8 @@
-import React from "react";
-import HeaderCreatePage from "../components/HeaderCreatePage";
-import NoteInput from "../components/NoteInput";
-import Button from "../components/Button";
+import { HeaderCreatePage } from "../components/HeaderPage";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import NoteInput from "../components/NoteInput";
+import Button from "../components/Button";
 import axios from "axios";
 
 function CreatePage() {

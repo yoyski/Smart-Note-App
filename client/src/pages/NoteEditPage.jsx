@@ -1,15 +1,13 @@
-import React from "react";
 import { useState } from "react";
 import { useParams } from "react-router";
-import axios from "axios";
 import { useNoteStore } from "../stores/noteStore";
-import HeaderNoteEditPage from "../components/HeaderNoteEditPage";
+import { HeaderNoteEditPage } from "../components/HeaderPage";
+import { useNavigate } from "react-router";
+import { usePersistedState } from "../hooks/usePersistedState";
+import useFetchNoteById from "../hooks/useFetchNoteById";
 import NoteInput from "../components/NoteInput";
 import Button from "../components/Button";
-import { useNavigate } from "react-router";
-import useFetchNoteById from "../hooks/useFetchNoteById";
-import NoteInputSpinner from "../components/NoteInputSpinner";
-import { usePersistedState } from "../hooks/usePersistedState";
+import axios from "axios";
 
 export default function TodoEditPage() {
   const { currentNote, setCurrentNote } = useNoteStore();

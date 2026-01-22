@@ -1,9 +1,9 @@
-import HeaderViewPage from "../components/HeaderViewPage";
+import { HeaderViewPage } from "../components/HeaderPage";
 import { useParams } from "react-router";
-import ViewCard from "../components/ViewCard";
-import useFetchNoteById from "../hooks/useFetchNoteById";
 import { usePersistedState } from "../hooks/usePersistedState";
 import { useNavigate } from "react-router";
+import ViewCard from "../components/ViewCard";
+import useFetchNoteById from "../hooks/useFetchNoteById";
 import axios from "axios";
 
 export default function ViewPage() {
