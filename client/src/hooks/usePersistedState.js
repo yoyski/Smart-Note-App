@@ -9,7 +9,7 @@ export function usePersistedState(key, initialValue ) {
 
   useEffect(() => {
     setNote(key, value);
-  }, [value]);
+  }, [key, value]);
 
 
   return [value, setValue]
