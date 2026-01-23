@@ -19,7 +19,7 @@ const App = () => {
   // Create a concise summary of the following note. Keep only the key points. Return ONLY the summary:\n\n${editData.content}`
 
   return (
-    <div className="bg-[#F0F8A4] min-h-screen ">
+    <div>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="create" element={<CreatePage />} />

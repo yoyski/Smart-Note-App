@@ -1,7 +1,6 @@
 import Note from "../models/Note.js";
 
 export const createNote = async (req, res) => {
-
   try {
     const { title, content } = req.body;
 
@@ -20,7 +19,10 @@ export const createNote = async (req, res) => {
 
 export const getAllNotes = async (_, res) => {
   try {
-    const notes = await Note.find().sort({createdAt: -1})
+    const notes = await Note.find().sort({
+      updatedAt: -1,
+      createdAt: -1,
+    });
     res.status(200).json(notes);
   } catch (error) {
     console.log("Error in getAllNotes:", error);
@@ -44,11 +46,11 @@ export const getNoteById = async (req, res) => {
 export const updateNote = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, content } = req.body;
+    const { title, content, updatedAt } = req.body;
 
     const updatedNote = await Note.findByIdAndUpdate(
       id,
-      { title, content },
+      { title, content, updatedAt },
       { new: true },
     );
 
@@ -62,13 +64,14 @@ export const updateNote = async (req, res) => {
 };
 
 export const deleteNote = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const deletedNote = await Note.findByIdAndDelete(id);
-        if (!deletedNote) return res.status(404).json({ message: "Note not found" });
-        res.status(200).json({ message: "Note deleted successfully" });
-    } catch (error) {
-        console.log("Error in deleteNote:", error);
-        res.status(500).json({ message: "Internal Server error", id });
-    }
-}
+  try {
+    const { id } = req.params;
+    const deletedNote = await Note.findByIdAndDelete(id);
+    if (!deletedNote)
+      return res.status(404).json({ message: "Note not found" });
+    res.status(200).json({ message: "Note deleted successfully" });
+  } catch (error) {
+    console.log("Error in deleteNote:", error);
+    res.status(500).json({ message: "Internal Server error", id });
+  }
+};

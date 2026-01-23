@@ -10,31 +10,36 @@ function CreatePage() {
   const [note, setNote] = useState({ title: "", content: "" });
   const navigate = useNavigate();
 
-  const handleSaveNote = async () => {
-    try {
-      if (!note.title.trim() || !note.content.trim())
-        return console.log("Note is empty, not saving.");
+  const isNoteEmpty = !note.title.trim() || !note.content.trim();
 
+  const handleSaveNote = async () => {
+    if (isNoteEmpty) return;
+
+    try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/api/notes/", note);
-      console.log(res.data);
-      console.log("Note created successfully");
+      await axios.post("http://localhost:3000/api/notes/", note);
       navigate("/");
-      setNote({ title: "", content: "" });
     } catch (error) {
       console.error("Error creating note:", error);
+      alert("Failed to create note. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <HeaderCreatePage />
-      <NoteInput note={note} setNote={setNote} />
-      <Button onClick={handleSaveNote} loading={loading}>
-        Save Note
-      </Button>
+    <div className="bg-[#DAD887] min-h-screen">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <HeaderCreatePage />
+        <NoteInput note={note} setNote={setNote} />
+        <Button
+          onClick={handleSaveNote}
+          loading={loading}
+          disabled={isNoteEmpty || loading}
+        >
+          Save Note
+        </Button>
+      </div>
     </div>
   );
 }
