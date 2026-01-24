@@ -21,7 +21,7 @@ export function HeaderHomePage() {
   );
 };
 
-export function HeaderCreatePage() {
+export function HeaderCreatePage({openModal}) {
   return (
     <header>
       <div className="w-full py-4 flex items-center justify-between">
@@ -33,18 +33,18 @@ export function HeaderCreatePage() {
             Create Note
           </h1>
         </div>
-        <Link
-          to="/create"
+        <button
           className="inline-flex items-center justify-center rounded-full bg-[#75B06F] p-3 text-white"
+          onClick={openModal}
         >
           <Sparkles className="h-3 w-3 md:h-6 md:w-6" />
-        </Link>
+        </button>
       </div>
     </header>
   );
 };
 
-export function HeaderViewPage({ id, onClick }) {
+export function HeaderViewPage({ id, openModal }) {
   return (
     <header>
       <div className="w-full py-4 flex items-center justify-between">
@@ -60,7 +60,7 @@ export function HeaderViewPage({ id, onClick }) {
           </Link>
           <button
             className="inline-flex items-center justify-center rounded-lg bg-[#75B06F] p-3 text-white cursor-pointer"
-            onClick={onClick}
+            onClick={openModal}
           >
             <Trash2 className="h-3 w-3 md:h-6 md:w-6" />
           </button>
@@ -70,7 +70,7 @@ export function HeaderViewPage({ id, onClick }) {
   );
 }
 
-export function HeaderNoteEditPage({ onClick, isNoteUnchanged, id}) {
+export function HeaderNoteEditPage({ revertNote, isNoteUnchanged, id, openModal}) {
   return (
     <header>
       <div className="w-full py-4 flex items-center justify-between">
@@ -85,13 +85,14 @@ export function HeaderNoteEditPage({ onClick, isNoteUnchanged, id}) {
         <div className="flex items-center gap-3">
           <button
             className="disabled:opacity-50 inline-flex items-center justify-center rounded-full bg-[#36656B] p-3 text-white"
-            onClick={onClick}
+            onClick={revertNote}
             disabled={isNoteUnchanged}
           >
             <RotateCcw className="h-3 w-3 md:h-6 md:w-6" />
           </button>
           <button
             className="inline-flex items-center justify-center rounded-full bg-[#75B06F] p-3 text-white"
+            onClick={openModal}
           >
             <Sparkles className="h-3 w-3 md:h-6 md:w-6" />
           </button>

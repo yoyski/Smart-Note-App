@@ -4,6 +4,8 @@ import { useNoteStore } from "../stores/noteStore";
 import { HeaderNoteEditPage } from "../components/HeaderPage";
 import { useNavigate } from "react-router";
 import { usePersistedState } from "../hooks/usePersistedState";
+import { useModal } from "../stores/modalStore";
+import { AiUpdateModal } from "../components/Modal";
 import useFetchNoteById from "../hooks/useFetchNoteById";
 import NoteInput from "../components/NoteInput";
 import Button from "../components/Button";
@@ -15,6 +17,11 @@ export default function TodoEditPage() {
   const { id } = useParams();
   const [loading] = useState(false);
   const [note, setNote] = usePersistedState(`note-${id}`, {}); //it already has value came from ViewPage store in same key
+
+  const isModal = useModal((state) => state.isModal);
+  const openModal = useModal((state) => state.openModal);
+  const closeModal = useModal((state) => state.closeModal);
+
 
   useFetchNoteById(id, setCurrentNote);
 
@@ -46,10 +53,13 @@ export default function TodoEditPage() {
     <div className="bg-[#DAD887] min-h-screen">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <HeaderNoteEditPage
-          onClick={revertNote}
+          revertNote={revertNote}
           isNoteUnchanged={isNoteUnchanged}
           id={id}
+          openModal={openModal}
         />
+
+        {isModal && <AiUpdateModal closeModal={closeModal}/>}
         <NoteInput note={note} setNote={setNote} />
         <Button
           onClick={handleChangeNote}

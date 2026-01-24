@@ -6,9 +6,3 @@ export const useNoteStore = create((set) => ({
   setCurrentNote: (note) => set({ currentNote: note }),
   setLoading: (loading) => set({ loading }),
 }));
-
-export const useModalStore = create((set) => ({
-  isModal: false,
-  openModal: () => set({ isModal: true }),
-  closeModal: () => set({ isModal: false }),
-}));

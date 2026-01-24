@@ -5,15 +5,19 @@ import { useNavigate } from "react-router";
 import ViewCard from "../components/ViewCard";
 import useFetchNoteById from "../hooks/useFetchNoteById";
 import axios from "axios";
-import { useModalStore, useNoteStore } from "../stores/noteStore";
+import { useNoteStore } from "../stores/noteStore";
+import { useModal } from "../stores/modalStore";
 import ViewCardSkeleton from "../components/ViewCardSkeleton";
-import DeleteModal from "../components/deleteModal";
+import { DeleteModal } from "../components/Modal";
 
 export default function ViewPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [viewNote, setViewNote] = usePersistedState(`note-${id}`, {});
-  const { isModal, openModal, closeModal } = useModalStore();
+  const isModal = useModal((state) => state.isModal);
+  const openModal = useModal((state) => state.openModal);
+  const closeModal = useModal((state) => state.closeModal);
+
   const loading = useNoteStore((state) => state.loading);
 
   useFetchNoteById(id, setViewNote);
@@ -31,9 +35,9 @@ export default function ViewPage() {
   return (
     <div className="bg-[#F0F8A4] min-h-screen">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <HeaderViewPage id={id} onClick={openModal} />
+        <HeaderViewPage id={id} openModal={openModal} />
         {isModal && (
-          <DeleteModal closeModal={closeModal} deleteNote={deleteNote}/>
+          <DeleteModal closeModal={closeModal} deleteNote={deleteNote} />
         )}
         <div className="grid">
           {loading ? (
