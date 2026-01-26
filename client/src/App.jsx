@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router";
 import HomePage from "./pages/HomePage.jsx";
 import CreatePage from "./pages/CreatePage.jsx";
@@ -9,7 +8,7 @@ const App = () => {
   //   AI Features:
 
   // Generate Notes - Click the AI button on an empty note and describe what you want. The AI will create a complete note for you.
-  // Generate a note with the following requirements: ${aiPrompt}. Provide ONLY the note content, no preamble or explanation. Format it nicely with a clear structure.`
+  // Generate a JSON object with two fields: "title" and "content". The topic of the note is "How to start with React.js". Generate a title and content, and respond ONLY in JSON format.
 
   // Example: "A recipe for chocolate chip cookies" or "Meeting notes template"
 
@@ -23,6 +22,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="create" element={<CreatePage />} />
+        <Route path="create/ai" element={<CreatePage />} />
         <Route path="note/:id" element={<ViewPage />} />
         <Route path="note/:id/edit" element={<NoteEditPage />} />
       </Routes>

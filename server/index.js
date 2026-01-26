@@ -3,11 +3,12 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import noteRoutes from "./routes/noteRoutes.js";
+import aiRoutes from "./routes/aiRoutes.js"
 
 const app = express();
 
 dotenv.config();
-
+app.use
 app.use(express.json());
 app.use(
   cors({
@@ -17,6 +18,7 @@ app.use(
 );
 
 app.use("/api/notes", noteRoutes);
+app.use("/api/ai", aiRoutes)
 
 const PORT = 3000;
 

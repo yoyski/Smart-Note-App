@@ -1,10 +1,8 @@
 import React from "react";
 import { FileText, Plus, Sparkles } from 'lucide-react'
-import { useNavigate } from 'react-router'
-
+import { Link } from "react-router";
 export default function NotesNotFound() {
 
-  const navigate = useNavigate();
 
   return (
     <div className="text-center py-20">
@@ -18,31 +16,27 @@ export default function NotesNotFound() {
         <h2 className="text-2xl font-bold mb-3" style={{ color: "#36656B" }}>
           No Notes Yet
         </h2>
-        <p className="text-lg opacity-60 mb-8" style={{ color: "#36656B" }}>
+        <p className="text-lg opacity-60 mb-8" style={{ color: "#36656B" }} >
           Start capturing your thoughts and ideas
         </p>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-        <button
-          onClick={() => {
-            navigate('/create')
-          }}
-          className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-white font-semibold shadow-lg transition-transform hover:scale-105"
-          style={{ backgroundColor: "#75B06F" }}
+        <Link
+          className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-white font-semibold shadow-lg transition-transform hover:scale-105 bg-[#75B06F]"
+          to="create"
         >
           <Plus size={20} />
           Create Note
-        </button>
+        </Link>
 
-        <button
-          onClick={() => {}}
-          className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold shadow-lg transition-transform hover:scale-105"
-          style={{ backgroundColor: "#DAD887", color: "#36656B" }}
+        <Link
+          className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold shadow-lg transition-transform hover:scale-105 bg-[#DAD887] text-[#36656B]"
+          to="/create/ai"
         >
           <Sparkles size={20} />
           Generate with AI
-        </button>
+        </Link>
       </div>
     </div>
   );

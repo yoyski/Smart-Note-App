@@ -34,7 +34,8 @@ export const DeleteModal = ({ closeModal, deleteNote }) => {
   );
 };
 
-export const AiCreateModal = ({ closeModal, aiPrompt, setAiPrompt }) => {
+export const AiCreateModal = ({ closeModal, aiPrompt, setAiPrompt, handleAiGenerateNote, generating }) => {
+  
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
@@ -62,8 +63,10 @@ export const AiCreateModal = ({ closeModal, aiPrompt, setAiPrompt }) => {
           <button
             className="w-full py-3 rounded-xl text-white font-semibold transition-all hover:shadow-md disabled:opacity-50 cursor-pointer"
             style={{ backgroundColor: "#75B06F" }}
+            onClick={handleAiGenerateNote}
+            disabled={generating}
           >
-            Generate Note
+            {generating ? "Generating..." : "Generate Note"}
           </button>
         </div>
       </div>
@@ -71,7 +74,7 @@ export const AiCreateModal = ({ closeModal, aiPrompt, setAiPrompt }) => {
   );
 };
 
-export const AiUpdateModal = ({ closeModal }) => {
+export const AiUpdateModal = ({ closeModal, handleAiImproveNote, handleAiSummarizeNote, improving, summarizing }) => {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
@@ -89,12 +92,14 @@ export const AiUpdateModal = ({ closeModal }) => {
         </div>
         <div className="space-y-3">
           <button
-            className="w-full p-4 rounded-xl text-left transition-all hover:shadow-md flex items-center gap-3 cursor-pointer"
+            className="disabled:opacity-50 w-full p-4 rounded-xl text-left transition-all hover:shadow-md flex items-center gap-3 cursor-pointer"
             style={{ backgroundColor: "#F0F8A4", color: "#36656B" }}
+            onClick={handleAiImproveNote}
+            disabled={improving}
           >
             <Wand2 size={20} />
             <div>
-              <div className="font-semibold">Improve Note</div>
+              <div className="font-semibold">{improving ? "Improving..." : "Improve Note"}</div>
               <div className="text-sm opacity-70">
                 Enhance clarity and structure
               </div>
@@ -102,12 +107,14 @@ export const AiUpdateModal = ({ closeModal }) => {
           </button>
 
           <button
-            className="w-full p-4 rounded-xl text-left transition-all hover:shadow-md flex items-center gap-3 cursor-pointer"
+            className="disabled:opacity-50 w-full p-4 rounded-xl text-left transition-all hover:shadow-md flex items-center gap-3 cursor-pointer"
             style={{ backgroundColor: "#DAD887", color: "#36656B" }}
+            onClick={handleAiSummarizeNote}
+            disabled={summarizing}
           >
             <FileText size={20} />
             <div>
-              <div className="font-semibold">Summarize</div>
+              <div className="font-semibold">{summarizing ? "Summarizing..." : "Summarize Note"}</div>
               <div className="text-sm opacity-70">Create a concise summary</div>
             </div>
           </button>
