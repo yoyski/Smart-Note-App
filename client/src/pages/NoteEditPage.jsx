@@ -60,6 +60,7 @@ export default function NoteEditPage() {
       setLoading(true);
       const res = await api.put(`/notes/${id}`, note);
       setCurrentNote(res.data);
+      setLoading(false)
       navigate("/");
     } catch (error) {
       console.error("Error updating note:", error);
@@ -97,7 +98,7 @@ export default function NoteEditPage() {
         <Button
           onClick={handleUpdateNote}
           loading={loading}
-          disabled={isNoteUnchanged || isNoteEmpty}
+          disabled={isNoteUnchanged || isNoteEmpty || loading}
         >
           Update Note
         </Button>
