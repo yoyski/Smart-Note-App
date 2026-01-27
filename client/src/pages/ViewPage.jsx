@@ -24,8 +24,16 @@ export default function ViewPage() {
 
   const deleteNote = async () => {
     try {
+      // Delete the note from your API
       await api.delete(`/notes/${id}`);
-      navigate("/");
+
+      // Replace the current history entry so the user can't go back to this deleted note
+      window.history.replaceState(null, "", "/"); // URL becomes "/", old note URL is gone
+
+      // Navigate in your SPA (optional, ensures React Router updates)
+      navigate("/", { replace: true });
+
+      // Close the modal if you have one
       closeModal();
     } catch (error) {
       console.log(error);
