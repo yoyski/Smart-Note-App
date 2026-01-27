@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getNote, setNote } from "../lib/localStorage";
+import { getNote, setNote } from "../lib/sessionStorage";
 
 export function usePersistedState(key, initialValue) {
   const [value, setValue] = useState(() => {
