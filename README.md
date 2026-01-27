@@ -18,23 +18,19 @@
 ## 📸 Screenshots
 
 ### Home Dashboard
-
-![Home Page](./client/images/home.png)
+![Home Page](./client/images/home.jpg)
 _Clean, intuitive interface with all your notes at a glance_
 
 ### AI-Powered Creation
-
-![AI Generation](./images/ai-menu.png)
+![AI Generation](./client/images/ai-menu.jpg)
 _Generate, improve, or summarize notes with AI assistance_
 
 ### Note Editor
-
-![Editor](./images/editor.png)
+![Editor](./client/images/editor.png)
 _Distraction-free writing environment with AI tools_
 
 ### Empty State
-
-![Empty State](./images/empty-state.png)
+![Empty State](./client/images/empty-state.png)
 _Welcoming interface for new users_
 
 ---
