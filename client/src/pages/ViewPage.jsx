@@ -24,7 +24,7 @@ export default function ViewPage() {
 
   const deleteNote = async () => {
     try {
-      await api.delete(`notes/${id}`);
+      await api.delete(`/notes/${id}`);
       navigate("/");
       closeModal();
     } catch (error) {
