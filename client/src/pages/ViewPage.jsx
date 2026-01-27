@@ -4,11 +4,11 @@ import { usePersistedState } from "../hooks/usePersistedState";
 import { useNavigate } from "react-router";
 import ViewCard from "../components/ViewCard";
 import useFetchNoteById from "../hooks/useFetchNoteById";
-import axios from "axios";
 import { useNoteStore } from "../stores/noteStore";
 import { useModal } from "../stores/modalStore";
 import ViewCardSkeleton from "../components/ViewCardSkeleton";
 import { DeleteModal } from "../components/Modal";
+import api from "../lib/api";
 
 export default function ViewPage() {
   const { id } = useParams();
@@ -24,7 +24,7 @@ export default function ViewPage() {
 
   const deleteNote = async () => {
     try {
-      await axios.delete(`http://localhost:3000/api/notes/${id}`);
+      await api.delete(`notes/${id}`);
       navigate("/");
       closeModal();
     } catch (error) {
