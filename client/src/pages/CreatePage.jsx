@@ -4,9 +4,9 @@ import { useNavigate, useLocation } from "react-router";
 import { useModal } from "../stores/modalStore";
 import NoteInput from "../components/NoteInput";
 import Button from "../components/Button";
-import axios from "axios";
 import { AiCreateModal } from "../components/Modal";
 import { usePersistedState } from "../hooks/usePersistedState";
+import api from "../lib/api";
 
 function CreatePage() {
   const [loading, setLoading] = useState(false);
@@ -28,7 +28,7 @@ function CreatePage() {
   const handleAiGenerateNote = async () => {
     try {
       setGenerating(true);
-      const res = await axios.post("http://localhost:3000/api/ai/generate", {
+      const res = await api.post("/ai/generate", {
         prompt: aiPrompt,
       });
       setGenerating(false);
@@ -47,7 +47,7 @@ function CreatePage() {
 
     try {
       setLoading(true);
-      await axios.post("http://localhost:3000/api/notes/", note);
+      await api.post("/notes/", note);
       navigate("/");
       setNote({ title: "", content: "" });
     } catch (error) {

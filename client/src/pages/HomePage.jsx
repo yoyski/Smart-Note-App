@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { HeaderHomePage } from "../components/HeaderPage";
 import NoteCard from "../components/NoteCard";
-import axios from "axios";
 import NotesNotFound from "../components/NotesNotFound";
 import { usePersistedState } from "../hooks/usePersistedState";
+import api from "../lib/api";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(false);
@@ -11,7 +11,7 @@ export default function HomePage() {
 
   useEffect(() => {
     const fetchNotes = async () => {
-      const res = await axios.get("http://localhost:3000/api/notes");
+      const res = await api.get("/notes");
       setNotes(res.data);
       setLoading(false);
     };
