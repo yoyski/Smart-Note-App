@@ -26,11 +26,11 @@ _Clean, intuitive interface with all your notes at a glance_
 _Generate, improve, or summarize notes with AI assistance_
 
 ### Note Editor
-![Editor](./client/images/editor.png)
+![Editor](./client/images/editor.jpg)
 _Distraction-free writing environment with AI tools_
 
 ### Empty State
-![Empty State](./client/images/empty-state.png)
+![Empty State](./client/images/empty-state.jpg)
 _Welcoming interface for new users_
 
 ---
