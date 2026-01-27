@@ -1,9 +1,19 @@
 import { groq } from "../ai/groq.js";
 
-export const generateNoteFromPrompt = async (instruction) =>  {
+export const generateNoteFromPrompt = async (instruction) => {
   const completion = await groq.chat.completions.create({
     model: "openai/gpt-oss-120b",
     messages: [
+      {
+        role: "system",
+        content: `
+                You are the Smart Note App.
+                Do NOT introduce yourself.
+                Do NOT mention that you are an AI, assistant, or model.
+                Respond ONLY with the generated note content.
+                No greetings. No explanations. No meta text.
+                `,
+      },
       {
         role: "user",
         content: instruction,
@@ -23,4 +33,4 @@ export const generateNoteFromPrompt = async (instruction) =>  {
   } catch (err) {
     throw new Error(`AI returned invalid JSON: ${text}`);
   }
-}
+};
