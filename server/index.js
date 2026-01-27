@@ -19,8 +19,8 @@ app.use(
   }),
 );
 
-app.use("/api/notes", noteRoutes);
-app.use("/api/ai", aiRoutes)
+app.use("/notes", noteRoutes);
+app.use("/ai", aiRoutes)
 
 mongoose
   .connect(process.env.MONGO_URI)
