@@ -8,6 +8,8 @@ import aiRoutes from "./routes/aiRoutes.js"
 const app = express();
 
 dotenv.config();
+const PORT = process.env.PORT;
+
 app.use
 app.use(express.json());
 app.use(
@@ -19,8 +21,6 @@ app.use(
 
 app.use("/api/notes", noteRoutes);
 app.use("/api/ai", aiRoutes)
-
-const PORT = 3000;
 
 mongoose
   .connect(process.env.MONGO_URI)
