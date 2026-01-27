@@ -9,7 +9,7 @@
 
 **A modern, AI-powered note-taking application designed for productivity and clarity.**
 
-[Features](#-features) • [Demo](#-demo) • [Installation](#-installation) • [Usage](#-usage) • [Tech Stack](#tech-stack)
+[Features](#-features) • [Demo](#-demo) • [Installation](#-installation) • [Usage](#-usage) • [Tech Stack](#-tech-stack)
 
 </div>
 
