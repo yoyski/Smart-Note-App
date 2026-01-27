@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import axios from "axios";
 import { useNoteStore } from "../stores/noteStore";
+import api from "../lib/api";
 
 export default function useFetchNoteById(id, setCurrentNote) {
   const setLoading = useNoteStore((state) => state.setLoading);
@@ -11,7 +11,7 @@ export default function useFetchNoteById(id, setCurrentNote) {
     const fetchNoteById = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`http://localhost:3000/api/notes/${id}`);
+        const res = await api.get(`/notes/${id}`);
         setCurrentNote(res.data);
         setLoading(false);
       } catch (error) {
