@@ -282,6 +282,4 @@ Built with a passion for clean architecture, intuitive design, and the power of 
 
 **Made with ❤️ and AI**
 
-[⬆ Back to Top](#-smart-note-app)
-
 </div>
