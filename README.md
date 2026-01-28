@@ -3,9 +3,9 @@
 <div align="center">
 
 ![Smart Note App Banner](https://img.shields.io/badge/Smart_Note-AI_Powered-75B06F?style=for-the-badge)
-[![License](https://img.shields.io/badge/License-MIT-36656B?style=for-the-badge)](LICENSE)
 [![React](https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
-[![AI Powered](https://img.shields.io/badge/AI-Claude_Sonnet_4-DAD887?style=for-the-badge)](https://anthropic.com)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![AI Powered](https://img.shields.io/badge/AI-Claude%20%26%20ChatGPT-DAD887?style=for-the-badge)](https://anthropic.com)
 
 **A modern, AI-powered note-taking application designed for productivity and clarity.**
 
