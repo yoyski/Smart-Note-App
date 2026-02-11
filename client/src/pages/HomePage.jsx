@@ -3,18 +3,28 @@ import { HeaderHomePage } from "../components/HeaderPage";
 import NoteCard from "../components/NoteCard";
 import NoteCardSkeleton from "../components/NoteCardSkeleton";
 import NotesNotFound from "../components/NotesNotFound";
-import { usePersistedState } from "../hooks/usePersistedState";
 import api from "../lib/api";
 
 export default function HomePage() {
-  const [loading, setLoading] = useState(false);
-  const [notes, setNotes] = usePersistedState("notes", []);
+  const [loading, setLoading] = useState(true);
+  const [notes, setNotes] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchNotes = async () => {
-      const res = await api.get("/notes");
-      setNotes(res.data);
-      setLoading(false);
+      try {
+        setLoading(true);
+        setError(null);
+
+        const res = await api.get("/notes");
+
+        setNotes(res.data);
+      } catch (err) {
+        console.error("Error fetching notes:", err);
+        setError("Failed to load notes.");
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchNotes();
@@ -25,18 +35,30 @@ export default function HomePage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <HeaderHomePage />
 
+        {/* Loading Skeleton */}
         {loading && (
-          <div className="grid gap-4">
+          <div className="grid gap-4 mt-6">
             {Array.from({ length: 3 }).map((_, i) => (
               <NoteCardSkeleton key={i} />
             ))}
           </div>
         )}
 
-        {!loading && notes.length === 0 && <NotesNotFound />}
+        {/* Error State */}
+        {!loading && error && (
+          <div className="text-red-600 mt-6">
+            {error}
+          </div>
+        )}
 
-        {!loading && notes.length > 0 && (
-          <div className="grid gap-4">
+        {/* No Notes */}
+        {!loading && !error && notes.length === 0 && (
+          <NotesNotFound />
+        )}
+
+        {/* Notes List */}
+        {!loading && !error && notes.length > 0 && (
+          <div className="grid gap-4 mt-6">
             {notes.map((note) => (
               <NoteCard key={note._id} note={note} />
             ))}
