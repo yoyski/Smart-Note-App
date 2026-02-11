@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { HeaderHomePage } from "../components/HeaderPage";
 import NoteCard from "../components/NoteCard";
+import NoteCardSkeleton from "../components/NoteCardSkeleton";
 import NotesNotFound from "../components/NotesNotFound";
 import { usePersistedState } from "../hooks/usePersistedState";
 import api from "../lib/api";
@@ -24,15 +25,23 @@ export default function HomePage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <HeaderHomePage />
 
-        <div>
-          {loading && <div>Loading...</div>}
-          {notes.length === 0 && !loading && <NotesNotFound />}
+        {loading && (
+          <div className="grid gap-4">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <NoteCardSkeleton key={i} />
+            ))}
+          </div>
+        )}
+
+        {!loading && notes.length === 0 && <NotesNotFound />}
+
+        {!loading && notes.length > 0 && (
           <div className="grid gap-4">
             {notes.map((note) => (
               <NoteCard key={note._id} note={note} />
             ))}
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
