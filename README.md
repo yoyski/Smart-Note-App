@@ -3,9 +3,9 @@
 <div align="center">
 
 ![Smart Note App Banner](https://img.shields.io/badge/Smart_Note-AI_Powered-75B06F?style=for-the-badge)
-[![License](https://img.shields.io/badge/License-MIT-36656B?style=for-the-badge)](LICENSE)
 [![React](https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
-[![AI Powered](https://img.shields.io/badge/AI-Claude_Sonnet_4-DAD887?style=for-the-badge)](https://anthropic.com)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![AI Powered](https://img.shields.io/badge/AI-Claude%20%26%20ChatGPT-DAD887?style=for-the-badge)](https://anthropic.com)
 
 **A modern, AI-powered note-taking application designed for productivity and clarity.**
 
@@ -81,25 +81,7 @@ _Welcoming interface for new users_
 3. **Manage Your Notes**
    - View, edit, or delete notes from the dashboard
    - Use undo to revert changes during editing
-
----
-
-## ☁️ Deployment
-
-The Smart Note App is **fully deployed** and accessible online.
-
-### Frontend
-
-- **Vercel**
-  - Automatically deployed from the `client/` folder
-  - Continuous deployment on push to `main` branch
-
-### Backend
-
-- **Render**:
-  - Node/Express server hosting API endpoints
-  - Automatically updated on commits to `server/` repository
-
+     
 ---
 
 ## 🚀 Installation
@@ -174,40 +156,59 @@ Extracts key points from lengthy notes
 
 ## 🛠️ Tech Stack
 
-### Frontend Framework
-
+### Frontend
 ![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-Latest-646CFF?style=flat-square&logo=vite&logoColor=white)
 
-### AI Integration
+- **Framework**: React 18  
+- **Build Tool**: Vite  
+- **Features**: Fast development, HMR, optimized builds
 
-![groq](https://img.shields.io/badge/openai/gpt-oss-120b?style=flat-square)
+### Backend
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white)
 
-- **Model**: openai/gpt-oss-120b
-- **API**: openai Messages API
-- **Features**: Text generation, content improvement, summarization
+- **Framework**: Node.js + Express  
+- **Features**: RESTful API endpoints, server-side logic for notes and AI requests
 
-### UI Components
+### Database
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
 
-![Lucide React](https://img.shields.io/badge/Lucide_React-Icons-F56565?style=flat-square)
-
-- Modern icon library
-- Lightweight and customizable
-
-### Styling
-
-- **Tailwind CSS** - Utility-first CSS framework
-- **Custom Color Palette**:
-  - Primary: `#36656B` (Deep Teal)
-  - Accent: `#75B06F` (Sage Green)
-  - Secondary: `#DAD887` (Soft Yellow)
-  - Background: `#F0F8A4` (Light Cream)
+- **Database**: MongoDB  
+- **Usage**: Persistent storage for notes and user data  
 
 ### State Management
+![Zustand](https://img.shields.io/badge/Zustand-000000?style=flat-square)
 
-- React Hooks (`useState`)
-- Prop drilling for simple state flow
-- Session-based data persistence
+- **Library**: Zustand  
+- **Usage**: Global state for notes, AI prompts, and modal states
+
+### AI & LLM Integration
+![Groq](https://img.shields.io/badge/Groq-FF4F00?style=flat-square)
+![ChatGPT](https://img.shields.io/badge/ChatGPT-412991?style=flat-square&logo=openai&logoColor=white)
+
+- **Models**: Groq AI + ChatGPT  
+- **API**: Messages API  
+- **Features**: Text generation, content improvement, summarization
+
+### Styling & UI
+![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+![Lucide React](https://img.shields.io/badge/Lucide_React-Icons-F56565?style=flat-square)
+
+- **Framework**: Tailwind CSS  
+- **Icons**: Lucide React  
+- **Custom Palette**:  
+  - Primary: `#36656B` (Deep Teal)  
+  - Accent: `#75B06F` (Sage Green)  
+  - Secondary: `#DAD887` (Soft Yellow)  
+  - Background: `#F0F8A4` (Light Cream)
+
+### Deployment & Hosting
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel)
+![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=white)
+
+- **Frontend Hosting**: Vercel  
+- **Backend Hosting**: Render
 
 ---
 
@@ -281,7 +282,5 @@ Built with a passion for clean architecture, intuitive design, and the power of 
 <div align="center">
 
 **Made with ❤️ and AI**
-
-[⬆ Back to Top](#-smart-note-app)
 
 </div>
