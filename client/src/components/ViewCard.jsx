@@ -8,7 +8,7 @@ const ViewCard = ({ note }) => {
       <h3 className="text-xl font-semibold mb-2 text-[#36656B]">
         {note.title}
       </h3>
-      <p className="opacity-70 mb-3 line-clamp-2 text-[#36656B]">
+      <p className="opacity-70 mb-3 text-[#36656B]">
         {note.content}
       </p>
       <p className="text-sm opacity-50 text-[#36656B]">

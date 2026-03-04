@@ -15,9 +15,7 @@ export default function HomePage() {
       try {
         setLoading(true);
         setError(null);
-
         const res = await api.get("/notes");
-
         setNotes(res.data);
       } catch (err) {
         console.error("Error fetching notes:", err);
