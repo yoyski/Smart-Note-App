@@ -1,5 +1,3 @@
-import { groq } from "../ai/groq.js";
-
 export const generateNoteFromPrompt = async (instruction) => {
   const completion = await groq.chat.completions.create({
     model: "openai/gpt-oss-120b",
@@ -29,7 +27,10 @@ export const generateNoteFromPrompt = async (instruction) => {
   const text = completion.choices[0].message.content;
 
   try {
-    return JSON.parse(text);
+    // Extract JSON even if there's reasoning preamble before/after it
+    const jsonMatch = text.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) throw new Error("No JSON object found in response");
+    return JSON.parse(jsonMatch[0]);
   } catch (err) {
     throw new Error(`AI returned invalid JSON: ${text}`);
   }
