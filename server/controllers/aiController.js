@@ -3,7 +3,24 @@ import { generateNoteFromPrompt } from "../ai/noteHelper.js";
 export const generateNote = async (req, res) => {
   const { prompt } = req.body;
 
-  const instruction = `Generate a note in a JSON object with two fields: "title" and "content". The topic of the note: ${prompt}.If the content contains steps, format each step on a new line, numbered or bulleted as appropriate. Respond ONLY in valid JSON. Do NOT include markdown, code blocks, or extra text.`;
+  const instruction = `
+Generate a note about: ${prompt}
+
+Return ONLY a valid JSON object in this exact format:
+
+{
+  "title": "note title here",
+  "content": "note content here"
+}
+
+Rules:
+- No markdown
+- No code blocks
+- No explanations
+- No extra text
+- Content must be plain text
+- If there are steps, separate them with \\n
+`;
 
   try {
     const note = await generateNoteFromPrompt(instruction);
