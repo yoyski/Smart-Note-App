@@ -8,6 +8,9 @@ import aiRoutes from "./routes/aiRoutes.js"
 const app = express();
 
 dotenv.config();
+// Add this right after dotenv.config()
+console.log("GROQ_API_KEY exists:", !!process.env.GROQ_API_KEY);
+console.log("PORT:", process.env.PORT);
 const PORT = process.env.PORT;
 
 app.use(express.json());
