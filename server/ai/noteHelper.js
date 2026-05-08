@@ -32,6 +32,8 @@ export const generateNoteFromPrompt = async (instruction) => {
     if (!jsonMatch) throw new Error("No JSON object found in response");
     return JSON.parse(jsonMatch[0]);
   } catch (err) {
+    console.error("RAW AI RESPONSE:", text);
+    console.error("PARSE ERROR:", err.message);
     throw new Error(`AI returned invalid JSON: ${text}`);
   }
 };
